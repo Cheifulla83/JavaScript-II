@@ -79,6 +79,8 @@ function contains(item, list, cb) {
  const note = list.includes(item);
  if(note) {
    return cb(true);
+ } else {
+   return cb(false)
  }
   
 }
@@ -90,3 +92,4 @@ console.log(contains("Notebook", items, function(item) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  
