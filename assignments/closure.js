@@ -6,8 +6,10 @@
 const num2 = 7;
 function closure() {
   const num1 = 4;
-  return function() { 
+  function closed() { 
     return num1 + num2;
+}
+return closed()
 }
 console.log(closure());
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
@@ -22,19 +24,21 @@ const counterMaker = (limit) => {
   //      "closes over" the `count` variable. It can "see" it in the parent scope!
   // 3- Return the `counter` function.
   let count = 0;
-  
-    return function() {
-    count = count + 1;
+  function counter() {
+    count++;
     return count;
-};
+  }
+
+return counter
+}
 // Example usage: const myCounter = counterMaker();
 // myCounter(); // 1
 // myCounter(); // 2
 const myCounter = counterMaker();
+console.log(myCounter(4));
+console.log(myCounter(3));
 console.log(myCounter(2));
-console.log(myCounter(2));
-console.log(myCounter(2));
-console.log(myCounter(2));
+console.log(myCounter());
 
 
 // ==== Challenge 3: Make `counterMaker` more sophisticated ====
@@ -47,6 +51,7 @@ const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  let num = 0
   const obj = {
 
     increment1: function() {
@@ -56,5 +61,14 @@ const counterFactory = () => {
       return num --;
     }
   }
+  
+  return obj
+}
+let counterobj = counterFactory();
 
-};
+console.log(counterFactory())
+console.log(counterobj.increment1())
+console.log(counterobj.increment1())
+console.log(counterobj.increment1())
+console.log(counterobj.decrement1())
+console.log(counterobj.decrement1())

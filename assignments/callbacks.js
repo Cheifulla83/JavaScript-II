@@ -37,22 +37,24 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
   const test2 = firstItem(items, logExorbitantPrice);
   console.log(test2); // "this Pencil is worth a million dollars!"
 */
+// let getMovie = function(len) {
+//   return len;
+// }
+
+// function getLength(arr, movie) {
+//   // getLength passes the length of the array into the callback.
+//   return cb(arr.length);
+// }
+// console.log(getLength(items, getMovie))
 
 
-function getLength(arr, cb) {
-  // getLength passes the length of the array into the callback.
-  return cb(arr.length);
-}
-console.log(getLength(items,function(len) {
-  return len;
-}))
 
 function last(arr, cb) {
   // last passes the last item of the array into the callback.
-  return arr[arr.length - 1];
+  return cb(arr);
 }
 console.log(last(items, function(item) {
-  return item[item.length -1];
+  return items[item.length -1];
 }))
 
 function sumNums(x, y, cb) {
@@ -79,6 +81,8 @@ function contains(item, list, cb) {
  const note = list.includes(item);
  if(note) {
    return cb(true);
+ } else {
+   return cb(false)
  }
   
 }
@@ -90,3 +94,4 @@ console.log(contains("Notebook", items, function(item) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+ 
